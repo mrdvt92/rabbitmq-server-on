@@ -2,7 +2,7 @@ Name:           rabbitmq-server-on
 Summary:        Enables the RabbitMQ server
 Version:        0.08
 Release:        1%{?dist}
-License:        BSD
+License:        MIT
 Group:          System Environment/Daemons
 Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
