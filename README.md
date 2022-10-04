@@ -4,13 +4,17 @@ rabbitmq-server-on - RPM which enables the RabbitMQ server and enables plugins f
 
 # BUILD
 
-  make rpm
+```
+make rpm
+```
 
 # EXAMPLES
 
-  perl examples/perl-Net-RabbitMQ-Management-API-example.pl [host]
-  perl examples/perl-Net-STOMP-Client-subscribe.pl [host]
-  perl examples/perl-Net-STOMP-Client-producer.pl [host]
+```
+perl examples/perl-Net-RabbitMQ-Management-API-example.pl [host]
+perl examples/perl-Net-STOMP-Client-subscribe.pl [host]
+perl examples/perl-Net-STOMP-Client-producer.pl [host]
+```
 
 # COPYRIGHT AND LICENSE
 
