@@ -40,7 +40,7 @@ sub queue_callback {
   my $data  = decode_json($frame->body);
   $self->ack(frame => $frame);
   $timer    = (time - $timer);
-  printf "ID: %s, Time: %s, Timer: %0.2f ns\n", $data->{'id'}, $data->{'time'}, $timer * 1e6;
+  printf "ID: %s, Time: %s, Source %s, Timer: %0.2f ns\n", $data->{'id'}, $data->{'time'}, $data->{'source'}, $timer * 1e6;
   my $sleep = 1/$rate - $timer; #rate limiter
   sleep $sleep if $sleep > 0;
   return $continue ? 0 : 1;

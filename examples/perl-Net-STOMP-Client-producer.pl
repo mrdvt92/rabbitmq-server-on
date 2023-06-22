@@ -15,10 +15,10 @@ my $destination = "/queue/$queue";
 my $rate        = 4.25; #messages/second
 
 foreach my $id (1 .. 10000) {
-  printf "Consumers: %s, Messages: %s\n", $ws->consumers, $ws->messages;
+  printf "Consumers: %s, Messages: %s\n", $ws->consumers||0, $ws->messages||0; #undef if new queue
 
   my $time   = time;
-  my $string = encode_json({id=>$id, time=>$time});
+  my $string = encode_json({id=>$id, time=>$time, source=>'perl'});
   printf "Destination: %s, ID: %s, Time: %s, String: %s\n", $destination, $id, $time, $string;
   $stomp->send(destination => $destination, body => "$string\n"); #I like trailing new line
   sleep 1/$rate;
