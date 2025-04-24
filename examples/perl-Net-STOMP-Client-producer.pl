@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use Tie::IxHash qw{};
 use Time::HiRes qw{time sleep};
 use Net::STOMP::Client;
 use JSON::XS qw{encode_json};
@@ -18,7 +19,8 @@ foreach my $id (1 .. 10000) {
   printf "Consumers: %s, Messages: %s\n", $ws->consumers||0, $ws->messages||0; #undef if new queue
 
   my $time   = time;
-  my $string = encode_json({id=>$id, time=>$time, source=>'perl'});
+  tie my %payload, 'Tie::IxHash', id=>$id, time=>$time, source=>'perl';
+  my $string = encode_json(\%payload);
   printf "Destination: %s, ID: %s, Time: %s, String: %s\n", $destination, $id, $time, $string;
   $stomp->send(destination => $destination, body => "$string\n"); #I like trailing new line
   sleep 1/$rate;
