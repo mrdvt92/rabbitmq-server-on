@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 import time
 import json
 #import pika, an AMQP 0-9-1 client library for Python
@@ -16,7 +16,7 @@ try:
             # Display the message parts and ack the message
             tag  = method_frame.delivery_tag
             data = json.loads(body)
-            print "Id: {}, Time: {}, Source: {}".format(data.get("id"), data.get("time"), data.get("source"))
+            print("Id: {}, Time: {}, Source: {}".format(data.get("id"), data.get("time"), data.get("source")))
             channel.basic_ack(tag)
             time.sleep(1/15) #rate limit 15 per second
 except KeyboardInterrupt:
@@ -24,6 +24,6 @@ except KeyboardInterrupt:
 
 # Cancel the consumer and return any pending messages
 requeued_messages = channel.cancel()
-print 'Requeued %i messages' % requeued_messages
+print('Requeued %i messages' % requeued_messages)
 
 connection.close()
