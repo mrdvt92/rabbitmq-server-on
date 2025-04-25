@@ -1,16 +1,16 @@
 Name:           rabbitmq-server-on
 Summary:        Enables the RabbitMQ server
-Version:        0.08
+Version:        0.09
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Daemons
 Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
-Requires:       rabbitmq-server = 3.3.5
+Requires:       rabbitmq-server
 Requires:       systemd
 Requires:       firewalld
-Requires:       policycoreutils
-Requires:       policycoreutils-python
+#Requires:       policycoreutils
+#Requires:       policycoreutils-python
 
 %description 
 rabbitmq-server-on enables the RabbitMQ server and enables plugins for STOMP and the Management API
