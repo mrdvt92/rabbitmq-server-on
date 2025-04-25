@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use 5.010;
 use Time::HiRes qw{sleep};
 use Data::Dumper qw{Dumper};
 use DateTime;
@@ -19,9 +20,9 @@ while (1) {
              $queue->{"name"},
              $queue->{"messages"},
              $queue->{"consumers"},
-             $queue->{'message_stats'}->{'publish_details'}->{'rate'},
-             $queue->{'message_stats'}->{'ack_details'}->{'rate'},
-             $queue->{'messages_details'}->{'rate'};
+             $queue->{'message_stats'}->{'publish_details'}->{'rate'} // 'n/a',
+             $queue->{'message_stats'}->{'ack_details'}->{'rate'} // 'n/a',
+             $queue->{'messages_details'}->{'rate'} // 'n/a';
   }
   print "-" x 80, "\n" if @$queues > 1;
   sleep 5;
