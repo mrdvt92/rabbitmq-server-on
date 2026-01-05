@@ -1,6 +1,6 @@
 Name:           rabbitmq-server-on
 Summary:        Enables the RabbitMQ server
-Version:        0.09
+Version:        0.10
 Release:        1%{?dist}
 License:        MIT
 Group:          System Environment/Daemons
@@ -49,6 +49,9 @@ echo "firewall-cmd: reload"
 
 echo "rabbitmq-server: start"
 systemctl start rabbitmq-server
+
+echo "RabbitMQ Control: Enable features"
+/usr/sbin/rabbitmqctl enable_feature_flag all
 
 true
 
